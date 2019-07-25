@@ -26,7 +26,8 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--  自定义参数绑定  -->
+    <!--  自定义参数绑定
+      注：需要时使用-->
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <!--  转换器  -->
         <property name="converters">
@@ -36,4 +37,9 @@
             </list>
         </property>
     </bean>
+
+    <!--  全局异常处理器
+      只要实现了HandlerExceptionResolver接口就是全局异常处理器
+     -->
+    <bean class="cjs.ssm.exception.UserExceptionResolver"></bean>
 </beans>

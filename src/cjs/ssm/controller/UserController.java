@@ -1,5 +1,6 @@
 package cjs.ssm.controller;
 
+import cjs.ssm.exception.UserException;
 import cjs.ssm.po.User;
 import cjs.ssm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,11 @@ public class UserController {
     public ModelAndView findUserById(Integer id) throws Exception{
         ModelAndView modelAndView = new ModelAndView();
         User user = userService.findUserById(id);
+        //测试异常处理
+        /*User user = userService.findUserById(2);
+        if(user == null){
+            throw new UserException("修改的用户不存在！");
+        }*/
         modelAndView.addObject("user",user);
         modelAndView.setViewName("update");
         return modelAndView;
